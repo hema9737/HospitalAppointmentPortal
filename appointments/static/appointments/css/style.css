@@ -1,0 +1,998 @@
+/* ==========================================================================
+   CarePoint+ Hospital & Patient Appointment Management Portal
+   Custom Design System & Styling
+   Theme: White, Dark Green, Mint Green, Teal, Slate Navy
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+    /* Brand Palette */
+    --teal-primary: #087f8c;
+    --teal-dark: #06626d;
+    --teal-light: #e6f7f7;
+    --teal-glow: rgba(8, 127, 140, 0.18);
+
+    --green-dark: #094236;
+    --green-forest: #0b5948;
+    --green-mint: #e8f9f2;
+    --green-mint-border: #bcf0db;
+    --green-accent: #10b981;
+
+    --navy-text: #0f2438;
+    --navy-slate: #1e3a56;
+    --muted-slate: #64748b;
+    --muted-light: #94a3b8;
+
+    --surface-white: #ffffff;
+    --surface-light: #f8fafc;
+    --surface-soft: #f0fdf9;
+    --border-subtle: #e2e8f0;
+    --border-focus: #087f8c;
+
+    /* Shadows & Elevation */
+    --shadow-sm: 0 2px 8px rgba(15, 36, 56, 0.04);
+    --shadow-md: 0 8px 24px rgba(15, 36, 56, 0.07);
+    --shadow-lg: 0 16px 40px rgba(15, 36, 56, 0.10);
+    --shadow-hover: 0 20px 48px rgba(9, 66, 54, 0.14);
+
+    /* Radii */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base & Typography */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 86px;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--surface-light);
+    color: var(--navy-text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .brand-font {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    color: var(--navy-text);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+a {
+    color: var(--teal-primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--teal-dark);
+}
+
+/* ==========================================================================
+   Navigation Bar
+   ========================================================================== */
+.site-navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    transition: var(--transition);
+    z-index: 1040;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--navy-text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.brand-logo:hover {
+    color: var(--teal-primary);
+}
+
+.brand-cross-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--teal-primary), var(--green-forest));
+    color: #ffffff;
+    border-radius: 10px;
+    font-size: 1.15rem;
+    box-shadow: 0 4px 12px rgba(8, 127, 140, 0.28);
+}
+
+.nav-link-custom {
+    color: var(--navy-slate) !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.55rem 0.9rem !important;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link-custom:hover,
+.nav-link-custom.active {
+    color: var(--teal-primary) !important;
+    background: var(--teal-light);
+}
+
+/* Buttons */
+.btn-care-primary {
+    background: linear-gradient(135deg, var(--teal-primary), var(--green-forest));
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.65rem 1.45rem;
+    border-radius: var(--radius-full);
+    border: none;
+    box-shadow: 0 4px 14px rgba(8, 127, 140, 0.25);
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-care-primary:hover {
+    background: linear-gradient(135deg, var(--teal-dark), var(--green-dark));
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(9, 66, 54, 0.3);
+}
+
+.btn-care-secondary {
+    background: var(--surface-white);
+    color: var(--navy-slate) !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.65rem 1.45rem;
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-care-secondary:hover {
+    background: var(--green-mint);
+    border-color: var(--green-mint-border);
+    color: var(--green-forest) !important;
+    transform: translateY(-2px);
+}
+
+.btn-care-outline {
+    background: transparent;
+    color: var(--teal-primary) !important;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.15rem;
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--teal-primary);
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-care-outline:hover {
+    background: var(--teal-primary);
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-wrapper {
+    position: relative;
+    padding: 70px 0 80px;
+    background: linear-gradient(135deg, #eef9f8 0%, #f4fbf7 50%, #f8fbfd 100%);
+    overflow: hidden;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.hero-wrapper::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(8, 127, 140, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+    top: -150px;
+    right: -100px;
+    pointer-events: none;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    color: var(--green-forest);
+    border: 1px solid var(--green-mint-border);
+    padding: 7px 16px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.3rem;
+}
+
+.hero-title {
+    font-size: clamp(2.35rem, 4.8vw, 3.85rem);
+    line-height: 1.15;
+    font-weight: 800;
+    color: var(--navy-text);
+    margin-bottom: 1.25rem;
+}
+
+.hero-title .text-highlight {
+    background: linear-gradient(120deg, var(--green-forest), var(--teal-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--muted-slate);
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+/* Hero Media & Floating Card */
+.hero-media-wrapper {
+    position: relative;
+}
+
+.hero-image-container {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 4px solid #ffffff;
+}
+
+.hero-image-container img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.hero-image-container:hover img {
+    transform: scale(1.03);
+}
+
+.hero-floating-card {
+    position: absolute;
+    bottom: -22px;
+    left: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius-lg);
+    padding: 18px 24px;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.hero-floating-card .pulse-indicator {
+    width: 12px;
+    height: 12px;
+    background: var(--green-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+    display: inline-block;
+}
+
+/* Hero Key Pillars / Mini Cards */
+.hero-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 14px;
+    margin-top: 2.2rem;
+}
+
+.hero-pillar-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    transition: var(--transition);
+}
+
+.hero-pillar-card:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
+    border-color: var(--teal-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.hero-pillar-card .pillar-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--navy-text);
+    margin-bottom: 2px;
+}
+
+.hero-pillar-card .pillar-subtitle {
+    font-size: 0.8rem;
+    color: var(--muted-slate);
+    margin: 0;
+}
+
+/* ==========================================================================
+   Section Headers
+   ========================================================================== */
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-mint);
+    color: var(--green-forest);
+    border: 1px solid var(--green-mint-border);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+}
+
+.section-main-title {
+    font-size: clamp(1.85rem, 3.2vw, 2.55rem);
+    font-weight: 800;
+    color: var(--navy-text);
+    margin-bottom: 0.75rem;
+}
+
+.section-lead {
+    font-size: 1.05rem;
+    color: var(--muted-slate);
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Feature / Pillar Cards (4 Core Highlights)
+   ========================================================================== */
+.feature-card {
+    background: var(--surface-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    height: 100%;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--teal-primary), var(--green-forest));
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: #cbd5e1;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-icon-bubble {
+    width: 58px;
+    height: 58px;
+    border-radius: var(--radius-md);
+    background: var(--green-mint);
+    color: var(--green-forest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+}
+
+/* ==========================================================================
+   Departments Section
+   ========================================================================== */
+.department-card {
+    background: var(--surface-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 30px 26px;
+    height: 100%;
+    display: flex;
+    flex-column: column;
+    justify-content: space-between;
+    transition: var(--transition);
+    position: relative;
+}
+
+.department-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--teal-primary);
+}
+
+.department-icon-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--teal-light), var(--green-mint));
+    color: var(--green-forest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.85rem;
+    margin-bottom: 20px;
+    border: 1px solid var(--green-mint-border);
+}
+
+.department-title {
+    font-size: 1.3rem;
+    font-weight: 750;
+    color: var(--navy-text);
+    margin-bottom: 10px;
+}
+
+.department-desc {
+    color: var(--muted-slate);
+    font-size: 0.93rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.department-action-link {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--teal-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.department-action-link:hover {
+    color: var(--green-forest);
+    gap: 10px;
+}
+
+/* ==========================================================================
+   Meet Our Expert Doctors Section
+   ========================================================================== */
+.doctors-section-wrapper {
+    background: linear-gradient(180deg, #f1f8f7 0%, #f8fafc 100%);
+    position: relative;
+}
+
+/* Doctor Search & Filter Controls */
+.filter-container-card {
+    background: var(--surface-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 22px 26px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 35px;
+}
+
+.search-input-custom,
+.filter-select-custom {
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 12px 18px;
+    font-size: 0.95rem;
+    color: var(--navy-text);
+    background-color: var(--surface-light);
+    transition: var(--transition);
+}
+
+.search-input-custom:focus,
+.filter-select-custom:focus {
+    background-color: #ffffff;
+    border-color: var(--teal-primary);
+    box-shadow: 0 0 0 4px var(--teal-glow);
+    outline: none;
+}
+
+/* Doctor Card */
+.doctor-card-modern {
+    background: var(--surface-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.doctor-card-modern:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: #cbd5e1;
+}
+
+.doctor-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background: #e2e8f0;
+    overflow: hidden;
+}
+
+.doctor-portrait-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.4s ease;
+}
+
+.doctor-card-modern:hover .doctor-portrait-img {
+    transform: scale(1.05);
+}
+
+.doctor-dept-chip {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    color: var(--green-forest);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-sm);
+}
+
+.doctor-fee-chip {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    background: rgba(9, 66, 54, 0.92);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-sm);
+}
+
+.doctor-body {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.doctor-name {
+    font-size: 1.25rem;
+    font-weight: 750;
+    color: var(--navy-text);
+    margin-bottom: 4px;
+}
+
+.doctor-specialty {
+    color: var(--teal-primary);
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 14px;
+}
+
+.doctor-meta-block {
+    background: var(--surface-light);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    color: var(--muted-slate);
+    margin-bottom: 18px;
+}
+
+.doctor-meta-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.doctor-meta-item:last-child {
+    margin-bottom: 0;
+}
+
+.doctor-meta-item strong {
+    color: var(--navy-text);
+}
+
+/* Empty / No Results */
+.no-results-panel {
+    background: var(--surface-white);
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--radius-lg);
+    padding: 50px 24px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Why Choose CarePoint+ Section
+   ========================================================================== */
+.why-card {
+    background: var(--surface-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 30px 26px;
+    height: 100%;
+    transition: var(--transition);
+}
+
+.why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--green-mint-border);
+}
+
+.why-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    background: var(--green-mint);
+    color: var(--green-forest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    margin-bottom: 18px;
+}
+
+/* ==========================================================================
+   About CarePoint+ Section
+   ========================================================================== */
+.about-section-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f4fbf8 100%);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    padding: 48px;
+    box-shadow: var(--shadow-md);
+}
+
+.about-feature-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.about-feature-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--teal-light);
+    color: var(--teal-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Hospital Contact & OPD Information
+   ========================================================================== */
+.contact-card-modern {
+    background: var(--surface-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    height: 100%;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.contact-card-modern:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.contact-icon-bubble {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    background: var(--teal-light);
+    color: var(--teal-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+}
+
+/* ==========================================================================
+   CTA Banner
+   ========================================================================== */
+.cta-banner-wrapper {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-forest) 50%, var(--teal-primary) 100%);
+    color: #ffffff;
+    border-radius: var(--radius-xl);
+    padding: 60px 40px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-banner-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+}
+
+.cta-title {
+    color: #ffffff;
+    font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+    font-weight: 800;
+}
+
+.cta-subtitle {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.1rem;
+    max-width: 600px;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+    background: var(--navy-text);
+    color: #e2e8f0;
+    padding: 70px 0 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-brand {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    text-decoration: none;
+}
+
+.footer-desc {
+    color: #94a3b8;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    max-width: 340px;
+}
+
+.footer-heading {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.footer-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links-list li {
+    margin-bottom: 10px;
+}
+
+.footer-link {
+    color: #cbd5e1;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-link:hover {
+    color: #38bdf8;
+    transform: translateX(3px);
+}
+
+.footer-divider {
+    border-color: rgba(255, 255, 255, 0.12);
+    margin: 45px 0 25px;
+}
+
+.footer-bottom-text {
+    color: #94a3b8;
+    font-size: 0.88rem;
+}
+
+/* ==========================================================================
+   Booking Form Page Specific Styles
+   ========================================================================== */
+.booking-banner {
+    background: linear-gradient(135deg, #eaf8f6 0%, #f0fdf7 50%, #edf6fb 100%);
+    padding: 55px 0 50px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+}
+
+.booking-info-panel {
+    background: linear-gradient(160deg, var(--green-dark) 0%, var(--navy-text) 100%);
+    color: #ffffff;
+    border-radius: var(--radius-xl);
+    padding: 38px 30px;
+    box-shadow: var(--shadow-md);
+    height: 100%;
+}
+
+.booking-info-item {
+    display: flex;
+    gap: 14px;
+    margin-top: 24px;
+    align-items: flex-start;
+}
+
+.booking-info-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.booking-card-main {
+    background: var(--surface-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    padding: 42px 38px;
+    box-shadow: var(--shadow-md);
+}
+
+.form-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.15rem;
+    font-weight: 750;
+    color: var(--navy-text);
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--border-subtle);
+    margin: 28px 0 20px;
+}
+
+.form-section-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--teal-light);
+    color: var(--teal-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
+.form-label-custom {
+    font-weight: 650;
+    font-size: 0.92rem;
+    color: var(--navy-slate);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.form-control,
+.form-select {
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    color: var(--navy-text);
+    background-color: var(--surface-white);
+    transition: var(--transition);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--teal-primary);
+    box-shadow: 0 0 0 4px var(--teal-glow);
+    outline: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .hero-wrapper {
+        padding: 50px 0 60px;
+    }
+
+    .hero-image-container img {
+        height: 320px;
+    }
+
+    .hero-floating-card {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin-top: 16px;
+    }
+
+    .booking-card-main {
+        padding: 30px 22px;
+    }
+
+    .about-section-card {
+        padding: 32px 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2.15rem;
+    }
+
+    .hero-pillars-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cta-banner-wrapper {
+        padding: 40px 24px;
+    }
+}

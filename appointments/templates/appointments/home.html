@@ -1,0 +1,841 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#087f8c">
+    <meta name="description" content="CarePoint+ Hospital & Patient Appointment Management Portal. Connect with expert specialists in Cardiology, Pediatrics, Orthopedics, and Neurology.">
+
+    <title>CarePoint+ | Hospital & Patient Appointment Management Portal</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom Theme CSS -->
+    <link rel="stylesheet" href="{% static 'appointments/css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- ==========================================================================
+         Navigation Bar
+         ========================================================================== -->
+    <nav class="navbar navbar-expand-lg site-navbar sticky-top">
+        <div class="container py-2">
+
+            <a class="brand-logo" href="{% url 'home' %}">
+                <span class="brand-cross-icon" aria-hidden="true">✚</span>
+                <span>CarePoint<span style="color: var(--teal-primary);">+</span></span>
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#careNavbar" aria-controls="careNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="careNavbar">
+                <div class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <a class="nav-link nav-link-custom active" href="#home">Home</a>
+                    <a class="nav-link nav-link-custom" href="#departments">Departments</a>
+                    <a class="nav-link nav-link-custom" href="#doctors">Doctors</a>
+                    <a class="nav-link nav-link-custom" href="#why-us">Why Us</a>
+                    <a class="nav-link nav-link-custom" href="#about">About</a>
+                    <a class="nav-link nav-link-custom" href="#contact">Contact</a>
+
+                    <div class="ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn btn-care-primary w-100" href="{% url 'book_appointment' %}">
+                            <i class="bi bi-calendar-check"></i> Book Appointment
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+         Hero Section
+         ========================================================================== -->
+    <section class="hero-wrapper" id="home">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <!-- Left Hero Copy -->
+                <div class="col-lg-7">
+                    <div class="hero-badge">
+                        <i class="bi bi-shield-check text-success"></i> YOUR HEALTH, OUR PRIORITY
+                    </div>
+
+                    <h1 class="hero-title">
+                        Quality Healthcare,<br>
+                        <span class="text-highlight">Closer to You.</span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Connect with premier board-certified physicians across Cardiology, Pediatrics,
+                        Orthopedics, and Neurology. Experience frictionless online booking, transparent
+                        schedules, and trusted clinical care.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3 align-items-center">
+                        <a href="#doctors" class="btn btn-care-primary btn-lg">
+                            <i class="bi bi-person-search"></i> Find a Doctor &rarr;
+                        </a>
+
+                        <a href="#about" class="btn btn-care-secondary btn-lg">
+                            <i class="bi bi-info-circle"></i> Learn More
+                        </a>
+
+                        <a href="#departments" class="btn btn-care-outline">
+                            <i class="bi bi-grid"></i> Explore Departments
+                        </a>
+                    </div>
+
+                    <!-- 4 Core Highlight Badges -->
+                    <div class="hero-pillars-grid">
+                        <div class="hero-pillar-card">
+                            <div class="pillar-title">
+                                <i class="bi bi-award text-success me-1"></i> Expert Doctors
+                            </div>
+                            <p class="pillar-subtitle">Certified specialists</p>
+                        </div>
+
+                        <div class="hero-pillar-card">
+                            <div class="pillar-title">
+                                <i class="bi bi-building text-primary me-1"></i> Modern Facilities
+                            </div>
+                            <p class="pillar-subtitle">Advanced technology</p>
+                        </div>
+
+                        <div class="hero-pillar-card">
+                            <div class="pillar-title">
+                                <i class="bi bi-clock-history text-info me-1"></i> 24/7 Support
+                            </div>
+                            <p class="pillar-subtitle">Emergency care</p>
+                        </div>
+
+                        <div class="hero-pillar-card">
+                            <div class="pillar-title">
+                                <i class="bi bi-wallet2 text-success me-1"></i> Affordable Care
+                            </div>
+                            <p class="pillar-subtitle">Transparent fees</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Media & Badge -->
+                <div class="col-lg-5">
+                    <div class="hero-media-wrapper">
+                        <div class="hero-image-container">
+                            <img src="{% static 'appointments/images/hero_hospital.jpg' %}"
+                                alt="CarePoint+ Hospital Modern Medical Center"
+                                class="img-fluid"
+                                onerror="this.style.display='none'; document.getElementById('heroFallback').style.display='block';">
+                            
+                            <!-- Fallback if static image fails -->
+                            <div id="heroFallback" style="display:none; padding: 60px 20px; text-align: center; background: #e0f2f1;">
+                                <div style="font-size: 80px;">🏥</div>
+                                <h3 class="fw-bold mt-2">CarePoint+ Hospital</h3>
+                                <p class="text-secondary">Compassionate Healthcare</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Stat Badge -->
+                        <div class="hero-floating-card">
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="pulse-indicator"></span>
+                                <div>
+                                    <div class="fw-bold" style="font-size: 0.95rem; color: var(--navy-text);">
+                                        CarePoint+ OPD Active
+                                    </div>
+                                    <div class="small text-secondary">
+                                        Appointments open today
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{% url 'book_appointment' %}" class="btn btn-care-primary btn-sm py-1 px-3">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         Clinical Departments Section
+         ========================================================================== -->
+    <section class="py-5" id="departments">
+        <div class="container py-4">
+
+            <div class="text-center mb-5">
+                <span class="section-tag">
+                    <i class="bi bi-hospital"></i> CLINICAL CENTERS OF EXCELLENCE
+                </span>
+                <h2 class="section-main-title">Specialized Medical Departments</h2>
+                <p class="section-lead">
+                    Our departments deliver targeted care with dedicated specialists and state-of-the-art diagnostic facilities.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Cardiology -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="department-card">
+                        <div>
+                            <div class="department-icon-wrap">
+                                <i class="bi bi-heart-pulse text-danger"></i>
+                            </div>
+                            <h3 class="department-title">Cardiology</h3>
+                            <p class="department-desc">
+                                Comprehensive cardiac care specializing in preventive cardiology, heart health, arrhythmias, and advanced interventional care.
+                            </p>
+                        </div>
+                        <a href="#doctors" class="department-action-link" onclick="filterByDept('cardiology')">
+                            <span>Find Specialists</span> &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pediatrics -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="department-card">
+                        <div>
+                            <div class="department-icon-wrap">
+                                <i class="bi bi-emoji-smile text-warning"></i>
+                            </div>
+                            <h3 class="department-title">Pediatrics</h3>
+                            <p class="department-desc">
+                                Compassionate healthcare for infants, children, and adolescents with specialized neonatal attention and child wellness.
+                            </p>
+                        </div>
+                        <a href="#doctors" class="department-action-link" onclick="filterByDept('pediatrics')">
+                            <span>Find Specialists</span> &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Orthopedics -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="department-card">
+                        <div>
+                            <div class="department-icon-wrap">
+                                <i class="bi bi-bandaid text-primary"></i>
+                            </div>
+                            <h3 class="department-title">Orthopedics</h3>
+                            <p class="department-desc">
+                                Leading joint replacement, sports injury treatments, trauma surgery, arthritis care, and comprehensive spine rehabilitation.
+                            </p>
+                        </div>
+                        <a href="#doctors" class="department-action-link" onclick="filterByDept('orthopedics')">
+                            <span>Find Specialists</span> &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Neurology -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="department-card">
+                        <div>
+                            <div class="department-icon-wrap">
+                                <i class="bi bi-activity text-success"></i>
+                            </div>
+                            <h3 class="department-title">Neurology</h3>
+                            <p class="department-desc">
+                                Expert diagnosis and cutting-edge treatments for neurological, cerebrovascular, headache disorders, and spinal conditions.
+                            </p>
+                        </div>
+                        <a href="#doctors" class="department-action-link" onclick="filterByDept('neurology')">
+                            <span>Find Specialists</span> &rarr;
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         Meet Our Expert Doctors Section
+         ========================================================================== -->
+    <section class="doctors-section-wrapper py-5" id="doctors">
+        <div class="container py-4">
+
+            <div class="text-center mb-5">
+                <span class="section-tag">
+                    <i class="bi bi-people-fill"></i> OUR MEDICAL TEAM
+                </span>
+                <h2 class="section-main-title">Meet Our Expert Doctors</h2>
+                <p class="section-lead">
+                    Consult qualified doctors across our medical departments. Select a doctor to request an appointment directly.
+                </p>
+            </div>
+
+            <!-- Search & Department Filter Card -->
+            <div class="filter-container-card">
+                <div class="row g-3 align-items-center">
+
+                    <div class="col-md-7">
+                        <label for="doctorSearch" class="form-label fw-semibold small text-secondary mb-1">
+                            <i class="bi bi-search me-1"></i> Search Doctors
+                        </label>
+                        <input type="search" id="doctorSearch" class="form-control search-input-custom"
+                            placeholder="Search by doctor name or specialization (e.g. Cardiologist, Sharma)..."
+                            autocomplete="off">
+                    </div>
+
+                    <div class="col-md-5">
+                        <label for="departmentFilter" class="form-label fw-semibold small text-secondary mb-1">
+                            <i class="bi bi-funnel me-1"></i> Filter by Department
+                        </label>
+                        <select id="departmentFilter" class="form-select filter-select-custom">
+                            <option value="">All Departments (All Specialists)</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="pediatrics">Pediatrics</option>
+                            <option value="orthopedics">Orthopedics</option>
+                            <option value="neurology">Neurology</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Dynamic Doctor Grid -->
+            <div class="row g-4" id="doctorList">
+
+                {% for doctor in doctors %}
+
+                <div class="col-sm-6 col-lg-4 col-xl-3 doctor-item"
+                    data-department="{{ doctor.department|lower }}"
+                    data-search="{{ doctor.name|lower }} {{ doctor.specialization|lower }} {{ doctor.department|lower }}">
+
+                    <div class="doctor-card-modern">
+
+                        <!-- Doctor Portrait Image -->
+                        <div class="doctor-image-wrapper">
+                            <img src="{% static doctor.image_static_path %}"
+                                alt="Portrait of {{ doctor.display_name }}"
+                                class="doctor-portrait-img"
+                                loading="lazy"
+                                onerror="this.onerror=null; this.src='{% static 'appointments/images/doctors/doctor_default.jpg' %}';">
+
+                            <!-- Department Badge -->
+                            <span class="doctor-dept-chip">
+                                {{ doctor.department }}
+                            </span>
+
+                            <!-- Consultation Fee Badge -->
+                            <span class="doctor-fee-chip">
+                                ₹{{ doctor.consultation_fee }}
+                            </span>
+                        </div>
+
+                        <!-- Doctor Card Body -->
+                        <div class="doctor-body">
+                            <h3 class="doctor-name">
+                                {{ doctor.display_name }}
+                            </h3>
+
+                            <div class="doctor-specialty">
+                                <i class="bi bi-patch-check-fill text-success me-1"></i>
+                                {{ doctor.specialization }}
+                            </div>
+
+                            <div class="doctor-meta-block">
+                                <div class="doctor-meta-item">
+                                    <span>Consultation Fee:</span>
+                                    <strong class="text-success">₹{{ doctor.consultation_fee }}</strong>
+                                </div>
+                                <div class="doctor-meta-item">
+                                    <span>Available Days:</span>
+                                    <strong>{{ doctor.available_days }}</strong>
+                                </div>
+                            </div>
+
+                            <a href="{% url 'book_appointment' %}?doctor={{ doctor.id }}"
+                                class="btn btn-care-primary w-100 mt-auto">
+                                <i class="bi bi-calendar-plus"></i> Book Appointment &rarr;
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                {% empty %}
+
+                <div class="col-12">
+                    <div class="no-results-panel">
+                        <div style="font-size: 48px; color: var(--teal-primary);">🩺</div>
+                        <h4 class="fw-bold mt-3">No doctors available yet</h4>
+                        <p class="text-secondary mb-0">Please check back shortly or contact our hospital desk.</p>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <!-- No Results Feedback Message -->
+            <div id="noResults" class="no-results-panel mt-4" hidden>
+                <div style="font-size: 48px; color: var(--teal-primary);">🔍</div>
+                <h4 class="fw-bold mt-3">No matching doctors found</h4>
+                <p class="text-secondary mb-3">
+                    We could not find any specialist matching your search criteria.
+                </p>
+                <button type="button" class="btn btn-care-secondary" id="resetFilters">
+                    <i class="bi bi-arrow-counterclockwise"></i> Clear Filters
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         Why Choose CarePoint+ Section
+         ========================================================================== -->
+    <section class="py-5" id="why-us">
+        <div class="container py-4">
+
+            <div class="text-center mb-5">
+                <span class="section-tag">
+                    <i class="bi bi-star"></i> PATIENT CONFIDENCE
+                </span>
+                <h2 class="section-main-title">Why Choose CarePoint+?</h2>
+                <p class="section-lead">
+                    We combine clinical expertise with modern scheduling to provide a patient-first healthcare experience.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- 1. Trusted & Safe -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="bi bi-shield-fill-check"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-2">Trusted & Safe</h3>
+                        <p class="text-secondary small mb-0">
+                            Strict safety and hygiene protocols, standardized medical processes, and verified clinical qualifications ensure your safety at every visit.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. Expert Team -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-2">Expert Team</h3>
+                        <p class="text-secondary small mb-0">
+                            Experienced physicians across Cardiology, Pediatrics, Orthopedics, and Neurology dedicated to accurate diagnoses and comprehensive care.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3. Convenient Access -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="bi bi-calendar2-check"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-2">Convenient Access</h3>
+                        <p class="text-secondary small mb-0">
+                            Frictionless online appointment booking with transparent consultation fees and doctor availability schedules.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. Complete Care -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="bi bi-heart-pulse"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-2">Complete Care</h3>
+                        <p class="text-secondary small mb-0">
+                            Dedicated follow-up support, diagnostic records, and empathetic patient care to support you through every stage of recovery.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         About CarePoint+ Section
+         ========================================================================== -->
+    <section class="py-5" id="about">
+        <div class="container py-4">
+
+            <div class="about-section-card">
+                <div class="row align-items-center g-5">
+
+                    <div class="col-lg-7">
+                        <span class="section-tag mb-3">
+                            <i class="bi bi-info-circle"></i> ABOUT CAREPOINT+
+                        </span>
+
+                        <h2 class="section-main-title mb-3">
+                            Patient-Focused Healthcare & Streamlined Scheduling
+                        </h2>
+
+                        <p class="text-secondary mb-4">
+                            CarePoint+ Hospital & Patient Appointment Management Portal is designed to make hospital consultations simple, organized, and transparent. We understand that navigating healthcare can be daunting, so we provide an intuitive platform where patients can explore department specialists, verify available days, and submit appointment requests with confidence.
+                        </p>
+
+                        <div class="about-feature-row">
+                            <div class="about-feature-icon">
+                                <i class="bi bi-check2-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="h6 fw-bold mb-1">Direct Specialist Booking</h4>
+                                <p class="text-secondary small mb-0">
+                                    Choose your preferred physician and consult on your schedule.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-feature-row">
+                            <div class="about-feature-icon">
+                                <i class="bi bi-check2-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="h6 fw-bold mb-1">No Double-Booking Conflicts</h4>
+                                <p class="text-secondary small mb-0">
+                                    Our system prevents overlapping slots to respect both patient and doctor schedules.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-feature-row">
+                            <div class="about-feature-icon">
+                                <i class="bi bi-check2-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="h6 fw-bold mb-1">Transparent Consultation Fees</h4>
+                                <p class="text-secondary small mb-0">
+                                    Every specialist listing displays clear consultation charges with zero hidden surprises.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <a href="{% url 'book_appointment' %}" class="btn btn-care-primary me-2">
+                                Book an Appointment Now &rarr;
+                            </a>
+                            <a href="#doctors" class="btn btn-care-secondary">
+                                Browse Medical Directory
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 text-center">
+                        <div class="p-4 rounded-4" style="background: var(--surface-soft); border: 1.5px solid var(--green-mint-border);">
+                            <div style="font-size: 72px;">🏥</div>
+                            <h3 class="h4 fw-bold mt-3 mb-2" style="color: var(--navy-text);">CarePoint+ Hospital</h3>
+                            <p class="text-secondary small mb-4">
+                                Dedicated to compassionate care, medical integrity, and accessible patient booking services.
+                            </p>
+                            <div class="d-flex justify-content-around text-center pt-3 border-top border-2" style="border-color: var(--green-mint-border) !important;">
+                                <div>
+                                    <h4 class="h5 fw-bold text-success mb-0">4</h4>
+                                    <small class="text-muted">Key Specialties</small>
+                                </div>
+                                <div>
+                                    <h4 class="h5 fw-bold text-success mb-0">100%</h4>
+                                    <small class="text-muted">Online Requests</small>
+                                </div>
+                                <div>
+                                    <h4 class="h5 fw-bold text-success mb-0">24/7</h4>
+                                    <small class="text-muted">Support Access</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         Hospital Contact & Information Section
+         ========================================================================== -->
+    <section class="py-5" id="contact">
+        <div class="container py-4">
+
+            <div class="text-center mb-5">
+                <span class="section-tag">
+                    <i class="bi bi-geo-alt"></i> HOSPITAL INFORMATION
+                </span>
+                <h2 class="section-main-title">Contact & OPD Timings</h2>
+                <p class="section-lead">
+                    Reach our hospital help desk or consult our visiting hours for assistance with appointments.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- OPD Schedule -->
+                <div class="col-md-4">
+                    <div class="contact-card-modern">
+                        <div class="contact-icon-bubble">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-2">OPD Visiting Hours</h3>
+                        <p class="text-secondary small mb-3">
+                            Regular outpatient consultation timings:
+                        </p>
+                        <ul class="list-unstyled small text-secondary mb-0">
+                            <li class="mb-2">
+                                <strong class="text-dark">Monday – Friday:</strong><br>
+                                08:30 AM – 07:00 PM
+                            </li>
+                            <li class="mb-2">
+                                <strong class="text-dark">Saturday:</strong><br>
+                                09:00 AM – 04:00 PM
+                            </li>
+                            <li>
+                                <strong class="text-dark">Sunday:</strong> Emergency Services Only
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Emergency Ward -->
+                <div class="col-md-4">
+                    <div class="contact-card-modern">
+                        <div class="contact-icon-bubble" style="background: #fee2e2; color: #dc2626;">
+                            <i class="bi bi-heart-pulse-fill"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-2">Emergency & Trauma</h3>
+                        <p class="text-secondary small mb-3">
+                            Round-the-clock emergency assistance:
+                        </p>
+                        <p class="small text-secondary mb-2">
+                            Our emergency ward and triage unit operates <strong>24 hours a day, 7 days a week</strong> for acute medical emergencies.
+                        </p>
+                        <div class="mt-3 p-2 rounded-3 text-center" style="background: #fef2f2; color: #991b1b; font-weight: 600; font-size: 0.85rem;">
+                            <i class="bi bi-telephone-inbound-fill me-1"></i> 24/7 Emergency Wing Available
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Online Portal Support -->
+                <div class="col-md-4">
+                    <div class="contact-card-modern">
+                        <div class="contact-icon-bubble">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h3 class="h5 fw-bold mb-2">Online Portal Support</h3>
+                        <p class="text-secondary small mb-3">
+                            Assistance with online bookings:
+                        </p>
+                        <p class="small text-secondary mb-3">
+                            Need help requesting an appointment or selecting the right medical specialist? Our patient coordination desk is here to assist.
+                        </p>
+                        <a href="{% url 'book_appointment' %}" class="btn btn-care-primary btn-sm w-100">
+                            Book Online Now &rarr;
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         Call to Action Banner
+         ========================================================================== -->
+    <section class="container py-4">
+        <div class="cta-banner-wrapper">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <h2 class="cta-title mb-2">
+                        Need Clinical Consultation?
+                    </h2>
+                    <p class="cta-subtitle mb-0">
+                        Schedule your visit with CarePoint+ specialist doctors in just a few clicks. Guaranteed appointment slots and clear schedules.
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{% url 'book_appointment' %}" class="btn btn-light btn-lg px-4 fw-bold"
+                        style="color: var(--green-dark); border-radius: var(--radius-full); box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                        <i class="bi bi-calendar2-plus"></i> Book Appointment Now &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         Footer
+         ========================================================================== -->
+    <footer class="site-footer mt-5">
+        <div class="container">
+            <div class="row g-5">
+
+                <!-- Col 1: Brand & Summary -->
+                <div class="col-lg-4 col-md-6">
+                    <a href="{% url 'home' %}" class="footer-brand">
+                        <span class="brand-cross-icon" style="width: 34px; height: 34px; font-size: 1rem;">✚</span>
+                        <span>CarePoint+</span>
+                    </a>
+                    <p class="footer-desc">
+                        CarePoint+ Hospital & Patient Appointment Management Portal provides patient-centered healthcare, transparent doctor scheduling, and accessible digital appointments.
+                    </p>
+                    <div class="d-flex gap-2 mt-3">
+                        <span class="badge text-bg-secondary p-2">
+                            <i class="bi bi-shield-check"></i> Secure Booking
+                        </span>
+                        <span class="badge text-bg-secondary p-2">
+                            <i class="bi bi-award"></i> Verified Specialists
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div class="col-lg-2 col-md-6 col-6">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#departments" class="footer-link">Departments</a></li>
+                        <li><a href="#doctors" class="footer-link">Our Doctors</a></li>
+                        <li><a href="#why-us" class="footer-link">Why CarePoint+</a></li>
+                        <li><a href="#about" class="footer-link">About Us</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Medical Departments -->
+                <div class="col-lg-3 col-md-6 col-6">
+                    <h4 class="footer-heading">Departments</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#doctors" class="footer-link" onclick="filterByDept('cardiology')">Cardiology</a></li>
+                        <li><a href="#doctors" class="footer-link" onclick="filterByDept('pediatrics')">Pediatrics</a></li>
+                        <li><a href="#doctors" class="footer-link" onclick="filterByDept('orthopedics')">Orthopedics</a></li>
+                        <li><a href="#doctors" class="footer-link" onclick="filterByDept('neurology')">Neurology</a></li>
+                        <li><a href="{% url 'book_appointment' %}" class="footer-link text-info">Book Consultation &rarr;</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Hospital Portal Access -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-heading">Hospital Portal</h4>
+                    <p class="small text-secondary mb-3">
+                        Online patient booking and hospital administration services.
+                    </p>
+                    <a href="{% url 'book_appointment' %}" class="btn btn-care-primary btn-sm w-100 mb-2">
+                        <i class="bi bi-calendar-check"></i> Book Appointment
+                    </a>
+                    <a href="{% url 'admin:index' %}" class="btn btn-outline-light btn-sm w-100" style="border-radius: var(--radius-full);">
+                        <i class="bi bi-person-lock"></i> Staff / Admin Portal
+                    </a>
+                </div>
+
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                    <p class="footer-bottom-text mb-0">
+                        &copy; {% now "Y" %} CarePoint+ Hospital & Patient Appointment Management Portal.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="footer-bottom-text mb-0">
+                        All patient medical records are kept confidential & secure.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         Client-side Doctor Search & Filtering Scripts
+         ========================================================================== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById("doctorSearch");
+            const departmentFilter = document.getElementById("departmentFilter");
+            const doctorItems = document.querySelectorAll(".doctor-item");
+            const noResults = document.getElementById("noResults");
+            const resetButton = document.getElementById("resetFilters");
+
+            function filterDoctors() {
+                const query = searchInput.value.toLowerCase().trim();
+                const department = departmentFilter.value.toLowerCase().trim();
+
+                let visibleCount = 0;
+
+                doctorItems.forEach(function (card) {
+                    const searchText = (card.dataset.search || "").toLowerCase();
+                    const doctorDepartment = (card.dataset.department || "").toLowerCase();
+
+                    const matchesSearch = query === "" || searchText.includes(query);
+                    const matchesDepartment = department === "" || doctorDepartment === department;
+
+                    const visible = matchesSearch && matchesDepartment;
+                    card.classList.toggle("d-none", !visible);
+
+                    if (visible) {
+                        visibleCount++;
+                    }
+                });
+
+                if (noResults) {
+                    noResults.hidden = visibleCount !== 0;
+                }
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener("input", filterDoctors);
+            }
+
+            if (departmentFilter) {
+                departmentFilter.addEventListener("change", filterDoctors);
+            }
+
+            if (resetButton) {
+                resetButton.addEventListener("click", function () {
+                    if (searchInput) searchInput.value = "";
+                    if (departmentFilter) departmentFilter.value = "";
+                    filterDoctors();
+                });
+            }
+
+            // Expose department filter helper for department cards and footer links
+            window.filterByDept = function(deptName) {
+                if (departmentFilter) {
+                    departmentFilter.value = deptName.toLowerCase();
+                    filterDoctors();
+                }
+                const doctorSection = document.getElementById("doctors");
+                if (doctorSection) {
+                    doctorSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+        });
+    </script>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
